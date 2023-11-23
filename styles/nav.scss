@@ -20,7 +20,7 @@ h3{
     z-index: 20;
     .single-word{
         display: flex;
-        outline: 2px solid red;
+       // outline: 2px solid red;
         overflow: hidden;
     }
     .navImages,.navLinks{
@@ -30,6 +30,22 @@ h3{
     .navImages{
     }
     .navLinks{
+        h3{
+            line-height: 65px;
+        }
+        .chars{
+            position: relative;
+            height: 70px;
+            // outline: 2px solid rgb(0, 255, 136);
+        }
+        .split-chars{
+            position: absolute;
+            top:0;
+            left: 0;
+        }
+        .split-chars.second{
+            color: $red-primary;
+        }
 
     }
     .single-char-inner{

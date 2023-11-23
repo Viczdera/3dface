@@ -6,7 +6,7 @@ import { AnimatePresence, motion, useAnimation } from 'framer-motion';
 
 function Nav() {
     const [isSide, setIsSide] = useState(false)
-    const [reverse, setReverse] = useState([false,false,false,false,false,false])
+    const [reverse, setReverse] = useState([false, false, false, false])
     const variantGray = {
         hidden: {
             y: '100%',
@@ -82,6 +82,7 @@ function Nav() {
         ["A", "B", "O", "U", "T"],
         ["C", "O", "N", "T", "A", "C", "T"]
     ]
+    console.log(reverse)
     return (
         <div className="navMain" >
 
@@ -108,50 +109,103 @@ function Nav() {
                                     {navItems.map((item, i) => (
                                         <li key={i} >
                                             <h3>
-                                                <div className="split-chars first">
-                                                    <motion.div className="single-word"
-                                                        initial="initial"
-                                                        whileHover="hover"
-                                                      
-                                                        onHoverEnd={() => setReverse((prevState:any)=>[
-                                                            ...prevState,
-                                                            reverse[i]=!reverse[i]
-                                                           ])}
-                                                           animate={reverse[i] ? 'end' : 'hover'}
-                                                    >
-                                                        {
-                                                            item.map((s, i) => (
-                                                                <motion.div
-                                                                    key={i}
-                                                                    className="single-char"
-                                                                    variants={{
-                                                                        ...varaintSingleText, 
-                                                                        hover: {
-                                                                            y: '-90%',
-                                                                            rotate: 0.001,
-                                                                            scale: 1.1,
-                                                                            transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
-                                                                        },
-                                                                        end: {
-                                                                            y: 0,
-                                                                            rotate: 0.001,
-                                                                            scale: 1,
-                                                                            transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
-                                                                          },
-                                                                    }}
-                                                                 
-                                                                   
-                                                                >
+                                                <motion.div className="chars"
+                                                    initial="end"
+                                                    whileHover="hover"
+                                                    // onHoverStart={()=>{
+                                                    //     let n=[...reverse]
+                                                    //     n[i]=false
+                                                    //     setReverse(n)
+                                                    // }}
+                                                    onHoverEnd={() => {
+                                                        let n = [...reverse]
+                                                        n[i] = true
+                                                        setReverse(n)
+                                                    }}
+                                                    animate={reverse[i] ? 'end' : 'initial'}
+                                                >
+
+                                                    <div className="split-chars first">
+                                                        <motion.div className="single-word"
+
+                                                        >
+                                                            {
+                                                                item.map((s, i) => (
                                                                     <motion.div
-                                                                        className="single-char-inner"
+                                                                        key={i}
+                                                                        className="single-char"
+                                                                        variants={{
+                                                                            ...varaintSingleText,
+                                                                            hover: {
+                                                                                y: '-100%',
+                                                                                rotate: 0.001,
+                                                                                scale: 1.1,
+                                                                                transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
+                                                                            },
+                                                                            end: {
+                                                                                y: 0,
+                                                                                rotate: 0.001,
+                                                                                scale: 1,
+                                                                                transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
+                                                                            },
+                                                                        }}
+
+
                                                                     >
-                                                                        {s}
+                                                                        <motion.div
+                                                                            className="single-char-inner"
+                                                                        >
+                                                                            {s}
+                                                                        </motion.div>
                                                                     </motion.div>
-                                                                </motion.div>
-                                                            ))
-                                                        }
-                                                    </motion.div>
-                                                </div></h3>
+                                                                ))
+                                                            }
+                                                        </motion.div>
+                                                    </div>
+                                                    <div className="split-chars second">
+                                                        <motion.div className="single-word"
+                                                        >
+                                                            {
+                                                                item.map((s, i) => (
+                                                                    <motion.div
+                                                                        key={i}
+                                                                        className="single-char"
+                                                                        variants={{
+                                                                            initial: {
+                                                                                y: "100%",
+                                                                                rotate: 0.001,
+                                                                                scale: 1.1,
+                                                                                // transform: 'translateY(0%) scale(1) rotate(0.001deg)',
+                                                                                transition: { duration: 0.5, ease: [0.6, 0, 0.1, 1] },
+                                                                            },
+                                                                            hover: {
+                                                                                y: '0%',
+                                                                                rotate: 0.001,
+                                                                                scale: 1.1,
+                                                                                transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
+                                                                            },
+                                                                            end: {
+                                                                                y: "100%",
+                                                                                rotate: 0.001,
+                                                                                scale: 1,
+                                                                                transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
+                                                                            },
+                                                                        }}
+
+
+                                                                    >
+                                                                        <motion.div
+                                                                            className="single-char-inner"
+                                                                        >
+                                                                            {s}
+                                                                        </motion.div>
+                                                                    </motion.div>
+                                                                ))
+                                                            }
+                                                        </motion.div>
+                                                    </div>
+                                                </motion.div>
+                                            </h3>
                                         </li>
                                     ))}
                                 </ul>
