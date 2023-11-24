@@ -140,13 +140,13 @@ function Nav() {
                                                                                 y: '-100%',
                                                                                 rotate: 0.001,
                                                                                 scale: 1.1,
-                                                                                transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
+                                                                                transition: { duration: 0.3 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
                                                                             },
                                                                             end: {
                                                                                 y: 0,
                                                                                 rotate: 0.001,
                                                                                 scale: 1,
-                                                                                transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
+                                                                                transition: { duration: 0.3 + (item.length-i) * 0.1, ease: [0.6, 0, 0.1, 1] },
                                                                             },
                                                                         }}
 
@@ -176,19 +176,19 @@ function Nav() {
                                                                                 rotate: 0.001,
                                                                                 scale: 1.1,
                                                                                 // transform: 'translateY(0%) scale(1) rotate(0.001deg)',
-                                                                                transition: { duration: 0.5, ease: [0.6, 0, 0.1, 1] },
+                                                                                transition: { duration: 0.3, ease: [0.6, 0, 0.1, 1] },
                                                                             },
                                                                             hover: {
                                                                                 y: '0%',
                                                                                 rotate: 0.001,
                                                                                 scale: 1.1,
-                                                                                transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
+                                                                                transition: { duration: 0.3 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
                                                                             },
                                                                             end: {
                                                                                 y: "100%",
                                                                                 rotate: 0.001,
                                                                                 scale: 1,
-                                                                                transition: { duration: 0.5 + i * 0.1, ease: [0.6, 0, 0.1, 1] },
+                                                                                transition: { duration: 0.3 + (item.length-i) * 0.1, ease: [0.6, 0, 0.1, 1] },
                                                                             },
                                                                         }}
 
